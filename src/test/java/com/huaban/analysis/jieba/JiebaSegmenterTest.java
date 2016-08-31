@@ -196,4 +196,33 @@ public class JiebaSegmenterTest extends TestCase {
         System.out.println(String.format(Locale.getDefault(), "time elapsed:%d, rate:%fkb/s, sentences:%.2f/s", elapsed,
             (length * 1.0) / 1024.0f / (elapsed * 1.0 / 1000.0f), wordCount * 1000.0f / (elapsed * 1.0)));
     }
+
+    @Test
+    public void testTradChinese() {
+        String[] all = new String[] {
+            "Combi %& f2  ^&&^$   plus",
+            "我沒有心",
+            "我沒有真實的自我",
+            "我只有消瘦的臉孔",
+            "所謂軟弱",
+            "所謂的順從一向是我的座右銘",
+
+            "而我沒有那海洋的寬闊",
+            "我只要熱情的撫摸所謂空洞",
+            "所謂不安全感是我 的墓誌銘",
+
+            "而你是否和我一般怯懦",
+            "是否和我一般矯作和我一般囉唆",
+        };
+
+        for(String s : all) {
+            List<SegToken> stoken = segmenter.process(s, SegMode.INDEX);
+            for(SegToken segToken : stoken) {
+                System.out.print(segToken.word);
+                System.out.print(" / ");
+            }
+            // System.out.println();
+        }
+
+    }
 }

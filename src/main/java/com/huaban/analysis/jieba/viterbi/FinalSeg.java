@@ -103,7 +103,7 @@ public class FinalSeg {
                 System.err.println(String.format(Locale.getDefault(), "%s: close failure!", PROB_EMIT));
             }
         }
-        System.out.println(String.format(Locale.getDefault(), "model load finished, time elapsed %d ms.",
+        System.err.println(String.format(Locale.getDefault(), "model load finished, time elapsed %d ms.",
             System.currentTimeMillis() - s));
     }
 

@@ -54,7 +54,7 @@ public class WordDictionary {
      */
     public void init(Path configFile) {
         String abspath = configFile.toAbsolutePath().toString();
-        System.out.println("initialize user dictionary:" + abspath);
+        System.err.println("initialize user dictionary:" + abspath);
         synchronized (WordDictionary.class) {
             if (loadedPath.contains(abspath))
                 return;
@@ -110,7 +110,7 @@ public class WordDictionary {
                 entry.setValue((Math.log(entry.getValue() / total)));
                 minFreq = Math.min(entry.getValue(), minFreq);
             }
-            System.out.println(String.format(Locale.getDefault(), "main dict load finished, time elapsed %d ms",
+            System.err.println(String.format(Locale.getDefault(), "main dict load finished, time elapsed %d ms",
                 System.currentTimeMillis() - s));
         }
         catch (IOException e) {
@@ -167,7 +167,7 @@ public class WordDictionary {
                 freqs.put(word, Math.log(freq / total));
                 count++;
             }
-            System.out.println(String.format(Locale.getDefault(), "user dict %s load finished, tot words:%d, time elapsed:%dms", userDict.toString(), count, System.currentTimeMillis() - s));
+            System.err.println(String.format(Locale.getDefault(), "user dict %s load finished, tot words:%d, time elapsed:%dms", userDict.toString(), count, System.currentTimeMillis() - s));
             br.close();
         }
         catch (IOException e) {
